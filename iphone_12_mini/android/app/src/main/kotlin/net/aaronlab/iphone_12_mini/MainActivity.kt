@@ -1,4 +1,4 @@
-package net.aaronlab.i_am_rich
+package net.aaronlab.iphone_12_mini
 
 import io.flutter.embedding.android.FlutterActivity
 

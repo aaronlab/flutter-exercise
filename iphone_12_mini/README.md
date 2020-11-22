@@ -1,4 +1,4 @@
-# i_am_rich
+# iphone_12_mini
 
 A new Flutter application.
 
