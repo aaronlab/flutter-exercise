@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../api/mock_fooderlich_service.dart';
+import '../components/components.dart';
 import '../models/models.dart';
 
 class ExploreScreen extends StatelessWidget {
@@ -14,9 +15,8 @@ class ExploreScreen extends StatelessWidget {
       future: mockService.getExploreData(),
       builder: (context, AsyncSnapshot<ExploreData> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          return const Center(
-            child: Text('Show TodayRecipeListView'),
-          );
+          final recipes = snapshot.data?.todayRecipes ?? [];
+          return TodayRecipeListView(recipes: recipes);
         }
 
         return const Center(
