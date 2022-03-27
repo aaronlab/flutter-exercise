@@ -28,7 +28,11 @@ class FriendPostTile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(post.comment),
+              Text(
+                post.comment,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
               Text(
                 '${post.timestamp} mins ago',
                 style: const TextStyle(fontWeight: FontWeight.w700),
