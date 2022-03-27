@@ -4,10 +4,42 @@ import '../api/mock_fooderlich_service.dart';
 import '../components/components.dart';
 import '../models/models.dart';
 
-class ExploreScreen extends StatelessWidget {
+class ExploreScreen extends StatefulWidget {
+  ExploreScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ExploreScreen> createState() => _ExploreScreenState();
+}
+
+class _ExploreScreenState extends State<ExploreScreen> {
   final mockService = MockFooderlichService();
 
-  ExploreScreen({Key? key}) : super(key: key);
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController.addListener(() {
+      if (_scrollController.offset <=
+              _scrollController.position.minScrollExtent &&
+          !_scrollController.position.outOfRange) {
+        print('I am at the top!');
+      }
+
+      if (_scrollController.offset >=
+              _scrollController.position.maxScrollExtent &&
+          !_scrollController.position.outOfRange) {
+        print('I am at the bottom!');
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +52,7 @@ class ExploreScreen extends StatelessWidget {
 
           return ListView(
             scrollDirection: Axis.vertical,
+            controller: _scrollController,
             children: [
               TodayRecipeListView(recipes: recipes),
               const SizedBox(
