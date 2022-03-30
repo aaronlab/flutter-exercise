@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 import '../models/models.dart';
 
@@ -89,7 +90,7 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
           children: [
             buildNameField(),
             buildImportanceField(),
-            // TODO 15: Add date picker
+            buildDateField()
             // TODO 16: Add time picker
             // TODO 17: Add color picker
             // TODO 18: Add slider
@@ -100,6 +101,7 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
     );
   }
 
+  /// Name Field
   Widget buildNameField() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,6 +130,7 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
     );
   }
 
+  /// Importance Field
   Widget buildImportanceField() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,7 +162,42 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
     );
   }
 
-// TODO: ADD buildDateField()
+  /// Date Field
+  Widget buildDateField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Date',
+              style: GoogleFonts.lato(fontSize: 28.0),
+            ),
+            TextButton(
+              onPressed: () async {
+                final currentDate = DateTime.now();
+                final selectedDate = await showDatePicker(
+                  context: context,
+                  initialDate: currentDate,
+                  firstDate: currentDate,
+                  lastDate: DateTime(currentDate.year + 5),
+                );
+
+                setState(() {
+                  if (selectedDate != null) {
+                    _dueDate = selectedDate;
+                  }
+                });
+              },
+              child: const Text('Select'),
+            ),
+          ],
+        ),
+        Text('${DateFormat('yyyy-MM-dd').format(_dueDate)}'),
+      ],
+    );
+  }
 
 // TODO: Add buildTimeField()
 
