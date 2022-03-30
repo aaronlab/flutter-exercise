@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fooderlich/models/models.dart';
+import 'package:provider/provider.dart';
 
 class EmptyGroceryScreen extends StatelessWidget {
   const EmptyGroceryScreen({Key? key}) : super(key: key);
@@ -19,13 +21,16 @@ class EmptyGroceryScreen extends StatelessWidget {
                 ),
               ),
               Text('No Groceries',
-                  style: Theme.of(context).textTheme.headline6),
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .headline6),
               const SizedBox(
                 height: 16.0,
               ),
               const Text(
                 'Shopping for ingredients?\n'
-                'Tap the + button to write them down!',
+                    'Tap the + button to write them down!',
                 textAlign: TextAlign.center,
               ),
               MaterialButton(
@@ -35,7 +40,9 @@ class EmptyGroceryScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30.0),
                 ),
                 color: Colors.green,
-                onPressed: () {},
+                onPressed: () {
+                  Provider.of<TabManager>(context, listen: false).goToRecipes();
+                },
               ),
             ],
           ),
