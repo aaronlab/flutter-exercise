@@ -4,3 +4,4 @@ export 'post.dart';
 export 'simple_recipe.dart';
 export 'simple_recipe.dart';
 export 'tab_manager.dart';
+export 'grocery_manager.dart';
