@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/models/models.dart';
 import 'package:provider/provider.dart';
+
+import '../models/models.dart';
 
 class EmptyGroceryScreen extends StatelessWidget {
   const EmptyGroceryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // TODO 3: Replace and add layout widgets
     return Padding(
         padding: const EdgeInsets.all(30.0),
         child: Center(
@@ -21,16 +21,13 @@ class EmptyGroceryScreen extends StatelessWidget {
                 ),
               ),
               Text('No Groceries',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .headline6),
+                  style: Theme.of(context).textTheme.headline6),
               const SizedBox(
                 height: 16.0,
               ),
               const Text(
                 'Shopping for ingredients?\n'
-                    'Tap the + button to write them down!',
+                'Tap the + button to write them down!',
                 textAlign: TextAlign.center,
               ),
               MaterialButton(
