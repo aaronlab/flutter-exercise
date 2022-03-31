@@ -9,6 +9,7 @@ class GroceryManager extends ChangeNotifier {
 
   void deleteItem(int index) {
     _groceryItems.removeAt(index);
+    notifyListeners();
   }
 
   void addItem(GroceryItem item) {
